@@ -1,16 +1,34 @@
 import React, { Component } from 'react';
 import './App.css';
 
+import Main from './../components/lol';
+
+const items = [
+	{name: "Foo"}, 
+	{name: "Doooo"}, 
+	{name: "GOOO"}, 
+	{name: "CDAAS"}, 
+	{name: "sdafda"}, 
+]
+
 class App extends Component {
+	state = {
+		value: null,
+	}
+
+	onChooseItem = item => {
+		this.setState({value: item})
+	}
+
   render = () => {
+  	const { value } = this.state
+  	// const { items } = this.props
     return (
       <div className="App">
-        <header className="App-header">
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        <Main
+         	items={ items }
+         	value={ value } 
+         	onChange={ this.onChooseItem }/>
       </div>
     );
   }

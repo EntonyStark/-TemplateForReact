@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 
-import Main from './../components/lol';
+import Main from './../components/select';
 
 const items = [
 	{name: "Foo"}, 

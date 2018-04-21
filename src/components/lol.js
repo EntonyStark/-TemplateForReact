@@ -32,8 +32,9 @@ class Main extends React.Component {
 		const rootElementBoundery = this.rootElement.getBoundingClientRect();
 		const itemsContainerElementBoundery = this.itemsContainerElement.getBoundingClientRect();
 		const left = rootElementBoundery.left;
+		const height = this.rootElement.offsetHeight;
 		const bottom = rootElementBoundery.top + this.itemsContainerElement.offsetHeight
-		const top = bottom > window.innerHeight ? rootElementBoundery.bottom - this.itemsContainerElement.offsetHeight : rootElementBoundery.top;
+		const top = bottom > window.innerHeight ? rootElementBoundery.bottom - this.itemsContainerElement.offsetHeight - height : rootElementBoundery.top + height;
 		return {
 			width: `${this.rootElement.offsetWidth}px`,
 			left: `${left}px`,
@@ -46,8 +47,8 @@ class Main extends React.Component {
 		this.setState({itemContainerBox})
 	}	
 
-	closeItemsContainer = () => {
-		this.setState({opened: false})
+	closeItemsContainer = (event) => {
+		this.props.items.some( el => el.name === event.target.innerHTML ) ? this.setState({opened: true}) : this.setState({opened: false})
 	}
 	
 	openItemsContainer = () => {
@@ -82,13 +83,12 @@ class Main extends React.Component {
 	)
 
 	render = () => {
-		const { style, value, items, valComponent: ValComponent, iconComponent: IconComponent } =this.props
+		const { value, items, valComponent: ValComponent, iconComponent: IconComponent } =this.props
 		const { opened } = this.state
 		return (		
 		<React.Fragment>
 			<div 
 				className="root" 
-				style={style} 
 				ref={root => {
 					this.rootElement = root;
 				}}

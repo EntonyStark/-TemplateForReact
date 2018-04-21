@@ -1,14 +1,20 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
 
-import App from "./containers/App";
+import MainPage from "./components/mainPage";
+import Delay from "./components/delay";
+import Localization from "./containers/App";
+import DragsComponent from "./containers/drags";
 
 const Routes = props => {
-	return (
-		<Switch>
-			<Route exact path="/" component={App} />
-		</Switch>
-	);
+  return (
+    <Switch>
+      <Route exact path="/" component={MainPage} />
+      <Route exact path="/delay" component={Delay} />
+      <Route exact path="/local" component={Localization} />
+      <Route exact path="/drags" component={DragsComponent} />
+    </Switch>
+  );
 };
 
-export default Routes
+export default Routes;

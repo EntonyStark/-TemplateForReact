@@ -1,0 +1,83 @@
+{
+  "main": "Главная",
+  "delay": "Задержка",
+  "drags": "Легкая Наркомания",
+  "local": "Локализация",
+  "title": "Добро пожаловать в Реакт",
+  "addDrags": "Нажми на меня",
+  "resetDrags": "Очистить",
+  "users": [
+    {
+      "name": "Артём",
+      "job": "Front-end"
+    },
+    {
+      "name": "Антон",
+      "job": "Front-end"
+    },
+    {
+      "name": "Владимир",
+      "job": "Front-end"
+    },
+    {
+      "name": "Роман",
+      "job": "Back-end"
+    },
+    {
+      "name": "Диана",
+      "job": "Back-end"
+    },
+    {
+      "name": "Маша",
+      "job": "Design"
+    },
+    {
+      "name": "Юлия",
+      "job": "Design"
+    },
+    {
+      "name": "Мария",
+      "job": "PM"
+    },
+    {
+      "name": "Алёна",
+      "job": "PM"
+    },
+    {
+      "name": "Денис",
+      "job": "PHP"
+    },
+    {
+      "name": "Андрей",
+      "job": "QA"
+    },
+    {
+      "name": "Полина",
+      "job": "HR"
+    },
+    {
+      "name": "Татьяна",
+      "job": "HR"
+    },
+    {
+      "name": "Слава",
+      "job": "Sales"
+    },
+    {
+      "name": "Алина",
+      "job": "Sales"
+    },
+    {
+      "name": "Анастасия",
+      "job": "Sales"
+    },
+    {
+      "name": "Настя",
+      "job": "Sales"
+    },
+    {
+      "name": "Дима",
+      "job": "SEO"
+    }
+  ]
+}

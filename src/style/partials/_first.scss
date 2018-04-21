@@ -1,0 +1,98 @@
+.first {
+  display: flex;
+  justify-content: center;
+}
+
+.nav-ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  justify-content: space-around;
+  max-width: 1400px;
+  width: 50%;
+  .nav-li {
+    margin: 10px 40px;
+    cursor: pointer;
+    .nav-li-a {
+      text-decoration: none;
+      &:hover {
+        color: red;
+      }
+    }
+  }
+}
+
+.delay {
+  display: flex;
+  flex-flow: row wrap;  
+  justify-content: space-between;
+  max-width: 1000px;
+  width: 100%;
+  margin: 0 auto;
+  .delay-main {
+    display: flex;
+    align-items: center;
+    margin: 0 15px 15px 0;
+    width: 25%;
+    .delay-img-blok {
+      max-width: 120px;
+      .delay-img {
+        width: 100%;
+      }
+    }
+    .delay-text-block {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-end;
+      font-size: 18px;
+      font-family: Roboto, sans-serif;
+      margin-left: 15px;
+    }
+  }
+}
+
+.toggle-block {
+  display: flex;
+  justify-content: center;
+  .toggle-btn {
+    margin-right: 15px;
+    width: 50px;
+    height: 20px;
+    border: 1px solid #eee;
+    background: #eee;
+    color: #000;
+    text-transform: uppercase;
+    outline: none;
+    &:hover {
+      color: #fff;
+    }
+  }
+}
+
+.drags {
+  font-family: Roboto, sans-serif;
+  .drags-btn-block {
+    display: flex;
+    justify-content: center;
+    .drags-btn {
+      margin-right: 15px;
+      border: 1px solid #eee;
+      width: 200px;
+      height: 30px;
+      background: #eee;
+    }
+  }
+  .drags-place {
+    max-width: 1000px;
+    width: 100%;
+    margin: 0 auto;
+    position: relative;
+    height: 500px;
+    .drags-staff {
+      position: absolute;
+      font-size: 16px;
+      color: #333335;
+    }
+  }
+}

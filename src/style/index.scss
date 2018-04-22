@@ -1,5 +1,20 @@
 $icon-font-path: "~bootstrap-sass/assets/fonts/bootstrap/";
 @import "~bootstrap-sass/assets/stylesheets/bootstrap";
 
+@import "./partials/fonts";
 @import "./partials/first";
 @import "./partials/loader";
+@import "./partials/animation";
+
+body {
+  font-family: 'PT Sans Narrow', sans-serif;
+  background-color: #2e2e30;
+  color: #222;
+  overflow-x: hidden;
+  height: 100%;
+  transition: background-color .4s linear; 
+}
+
+h1, h2, h3, h4 {
+  font-weight: 700;
+}

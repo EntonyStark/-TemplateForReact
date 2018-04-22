@@ -1,5 +1,5 @@
 import React from "react";
-import ChangePosition from "./HOC/example3";
+import ChangePosition from "./../HOC/example3";
 
 const Stringa = props => {
 	return <span style={props.style} className="drags-staff" key={props.index}>

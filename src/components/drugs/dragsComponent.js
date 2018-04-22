@@ -1,9 +1,9 @@
 import React from "react";
-import LocalHOC from "./HOC/example2";
+import LocalHOC from "./../HOC/example2";
 import Stringa from "./string";
 
 const DragsPage = props => {
-	const { setDrags, style } = props;
+	const { setDrags } = props;
 	console.log('some', setDrags)
 	return (
 		<div className="drags">

@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import * as actions from "../actions/toggleLang";
 
-import ToggleLang from "./../components/localization";
+import ToggleLang from "./../components/localization/localization";
 
 class Localization extends Component {
 	render() {

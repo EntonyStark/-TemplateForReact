@@ -2,8 +2,8 @@ import React from "react";
 import { connect } from "react-redux";
 import * as actions from "../actions/toggleDrags";
 
-import NavBar from "./../components/navigation";
-import DragsPage from "./../components/dragsComponent";
+import NavBar from "./../components/common/navigation";
+import DragsPage from "./../components/drugs/dragsComponent";
 
 import LocalHOC from "./../components/HOC/example2";
 

@@ -1,5 +1,5 @@
 import React from "react";
-import NavBar from './navigation';
+import NavBar from './../common/navigation';
 
 const ToggleLang = ({onClickRu, onClickEn}) => {
 	return (

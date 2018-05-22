@@ -1,18 +1,18 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
 
-import MainPage from "./components/mainPage";
-import Delay from "./components/delay";
-import Localization from "./containers/App";
-import DragsComponent from "./containers/drags";
+import UserList from "./components/Users/index";
+import Main from "./containers/Main";
+import DrugsContainer from "./containers/DrugsContainer";
+import BurgerBuilder from "./containers/BurgerBuilder";
 
 const Routes = props => {
   return (
     <Switch>
-      <Route exact path="/" component={MainPage} />
-      <Route exact path="/delay" component={Delay} />
-      <Route exact path="/local" component={Localization} />
-      <Route exact path="/drags" component={DragsComponent} />
+      <Route exact path="/" component={Main} />
+      <Route exact path="/users" component={UserList} />
+      <Route exact path="/drugs" component={DrugsContainer} />
+      <Route exact path="/burger" component={BurgerBuilder} />
     </Switch>
   );
 };

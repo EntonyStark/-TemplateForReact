@@ -1,5 +1,15 @@
 $icon-font-path: "~bootstrap-sass/assets/fonts/bootstrap/";
 @import "~bootstrap-sass/assets/stylesheets/bootstrap";
 
+@import "./partials/fonts";
 @import "./partials/first";
 @import "./partials/loader";
+@import "./partials/burger";
+
+body {
+  // font-family: 'PT Sans Narrow', sans-serif;
+  font-family: 'Archivo Narrow', sans-serif;
+  button {
+    outline: none;
+  }
+}

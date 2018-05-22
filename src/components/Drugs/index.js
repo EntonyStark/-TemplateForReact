@@ -1,10 +1,9 @@
 import React from "react";
-import LocalHOC from "./HOC/example2";
+import LocalHOC from "./../HOC/example2";
 import Stringa from "./string";
 
-const DragsPage = props => {
-	const { setDrags, style } = props;
-	console.log('some', setDrags)
+const DrugsPage = props => {
+	const { setDrags } = props;
 	return (
 		<div className="drags">
 			<div className="drags-btn-block">
@@ -32,4 +31,4 @@ const DragsPage = props => {
 	);
 };
 
-export default LocalHOC(DragsPage);
+export default LocalHOC(DrugsPage);

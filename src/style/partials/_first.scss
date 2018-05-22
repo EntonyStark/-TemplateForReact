@@ -1,6 +1,30 @@
-.first {
+.main-container {
+  max-width: 1920px;
+  width: 100%;
   display: flex;
-  justify-content: center;
+  flex-flow: column wrap;
+  align-items: center;
+  .greeting {
+    margin-bottom: 25px;
+  }
+  .toggle-title{
+    margin-right: 15px;
+  } 
+  .toggle-block {
+    .toggle-btn {
+      margin-right: 15px;
+      width: 50px;
+      height: 20px;
+      border: 1px solid #eee;
+      background: #eee;
+      color: #000;
+      text-transform: uppercase;
+      outline: none;
+      &:hover {
+        color: #fff;
+      }
+    }
+  }
 }
 
 .nav-ul {
@@ -9,7 +33,7 @@
   display: flex;
   justify-content: space-around;
   max-width: 1400px;
-  width: 50%;
+  width: 80%;
   .nav-li {
     margin: 10px 40px;
     cursor: pointer;
@@ -48,24 +72,6 @@
       font-size: 18px;
       font-family: Roboto, sans-serif;
       margin-left: 15px;
-    }
-  }
-}
-
-.toggle-block {
-  display: flex;
-  justify-content: center;
-  .toggle-btn {
-    margin-right: 15px;
-    width: 50px;
-    height: 20px;
-    border: 1px solid #eee;
-    background: #eee;
-    color: #000;
-    text-transform: uppercase;
-    outline: none;
-    &:hover {
-      color: #fff;
     }
   }
 }

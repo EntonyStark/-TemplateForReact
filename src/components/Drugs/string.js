@@ -1,10 +1,10 @@
 import React from "react";
-import ChangePosition from "./HOC/example3";
+import ChangePosition from "./../HOC/example3";
 
-const Stringa = props => {
+const stringa = props => {
 	return <span style={props.style} className="drags-staff" key={props.index}>
 		{props.el}
 	</span>
 }
 
-export default ChangePosition(Stringa)
+export default ChangePosition(stringa)

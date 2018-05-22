@@ -1,11 +1,21 @@
 {
   "main": "Main",
-  "delay": "Delay",
-  "drags": "Ligth Drags",
-  "local": "Localization",
-  "title": "Welcome to React",
+  "list": "Our team",
+  "drugs": "Ligth Drugs",
+  "mainPage": {
+    "title": "Welcome to React",
+    "switchLang": "Select the system language"
+  },
   "addDrags": "Click Me",
   "resetDrags": "Reset",
+  "burgerPage": {
+    "burger": "Burger Builder",
+    "emptyBurger": "Please start adding ingridients!",
+    "less": "Less",
+    "more": "More",
+    "currentPrise": "Current Price",
+    "orderNow": "Order now"
+  },
   "users": [
     {
       "name": "Artem",
@@ -28,6 +38,10 @@
       "job": "Back-end"
     },
     {
+      "name": "Max",
+      "job": "Back-end"
+    },
+    {
       "name": "Mariya",
       "job": "Design"
     },
@@ -42,10 +56,6 @@
     {
       "name": "Aliona",
       "job": "PM"
-    },
-    {
-      "name": "Denis",
-      "job": "PHP"
     },
     {
       "name": "Andrey",
@@ -76,7 +86,19 @@
       "job": "Sales"
     },
     {
+      "name": "Katya",
+      "job": "Sales"
+    },
+    {
       "name": "Dima",
+      "job": "Java"
+    },
+    {
+      "name": "Alexandr",
+      "job": "Java"
+    },
+    {
+      "name": "Dmitriy",
       "job": "SEO"
     }
   ]

@@ -1,7 +1,6 @@
 import * as Types from "./../constants/ActionTypes";
-import All from "./../utils/data.js";
 const initialState = {
- all: All,
+ all: null,
  data: []
 };
 

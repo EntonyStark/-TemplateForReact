@@ -3,12 +3,12 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import * as actions from "../actions/toggleLang";
 
-import ToggleLang from "./../components/localization";
+import MainPage from "./../components/Main/index";
 
-class Localization extends Component {
+class Main extends Component {
 	render() {
 		return (
-			<ToggleLang
+			<MainPage
 				onClickRu={() => this.props.toggleLang("ru")}
 				onClickEn={() => this.props.toggleLang("en")}
 			/>
@@ -20,4 +20,4 @@ const mapDispatchToProps = dispatch => {
 	return bindActionCreators(actions, dispatch)
 };
 
-export default connect(null, mapDispatchToProps)(Localization);
+export default connect(null, mapDispatchToProps)(Main);

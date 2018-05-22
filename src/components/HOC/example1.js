@@ -2,9 +2,7 @@ import React from 'react';
 
 const HOCcomponent = (Component) => {
 	return class extends React.Component {
-		state = {
-			show: false
-		}
+		state = {show: false}
 
 		componentDidMount() {
 			setTimeout( () =>  this.setState({show: true}), 3000 )

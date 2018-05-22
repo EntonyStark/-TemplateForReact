@@ -1,10 +1,9 @@
 import React from "react";
-import HOCcomponent from './HOC/example1';
-import LocalHOC from './HOC/example2';
-import All from './../utils/data';
-import Profile from "./../image/user.png";
+import HOCcomponent from './../HOC/example1';
+import LocalHOC from './../HOC/example2';
+import Profile from "./../../image/user.png";
 
-const DelayComponent = props => {
+const userListComponent = props => {
 	const { users } = props.lang
   return <div className="delay">
   	{
@@ -21,4 +20,4 @@ const DelayComponent = props => {
   </div>
 }
 
-export default LocalHOC(HOCcomponent(DelayComponent))
+export default LocalHOC(HOCcomponent(userListComponent))

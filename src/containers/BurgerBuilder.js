@@ -3,6 +3,8 @@ import React from "react";
 import NavBar from "./../components/navigation";
 import Burger from "./../components/Burger/Burger";
 import BuildControls from "./../components/Burger/BuildControls";
+import Modal from "./../components/UI/Modal";
+import Order from "./../components/Burger/order";
 import { prices } from "./../constants/BurgerPrices";
 
 class BurgerBuilder extends React.Component {
@@ -15,6 +17,7 @@ class BurgerBuilder extends React.Component {
 		},
 		totalPrise: 4,
 		purchasable: false,
+		openModal: false,
 	};
 
 	updatePurchaseState = ingridients => {
@@ -46,11 +49,18 @@ class BurgerBuilder extends React.Component {
 		newIngredients[type] = newCount;
 
 		const newPrice = this.state.totalPrise - prices[type];
-		// if (newPrice < 4) return console.log("error", "newPrice < 4");
 
 		this.setState({ totalPrise: newPrice, ingridients: newIngredients });
 		this.updatePurchaseState(newIngredients)
 	};
+
+	openModalHandler = () => {
+		this.setState({openModal: true})
+	}
+
+	closeModalHandler = () => {
+		this.setState({openModal: false})
+	}
 
 	render() {
 		const disabledInfo = { ...this.state.ingridients };
@@ -60,11 +70,17 @@ class BurgerBuilder extends React.Component {
 		return (
 			<React.Fragment>
 				<NavBar />
+				<Modal 
+					closeModal={this.closeModalHandler}
+					showModal={this.state.openModal}>
+					<Order ingridients={this.state.ingridients} />
+				</Modal>
 				<Burger ingridients={this.state.ingridients} />
 				<BuildControls
 					price={this.state.totalPrise}
 					purchasable={this.state.purchasable}
 					disabled={disabledInfo}
+					showModal={this.openModalHandler}
 					ingridientRemoved={this.removeIngridientHandler}
 					ingridientAdded={this.addIngridientHandler}
 				/>

@@ -1,17 +1,16 @@
 import React from "react";
-import LocalHOC from "./../HOC/example2.js";
 
 const item = props => {
-	const { more, less } = props.lang.burgerPage 
+	const { more, less, disabled, added, label, removed } = props 
 	return <div className="burger-control">
-		<div className="burger-control-label">{props.label}</div>
-		<button disabled={props.disabled} onClick={props.removed} className="burger-control-less">
+		<div className="burger-control-label">{label}</div>
+		<button disabled={disabled} onClick={removed} className="burger-control-less">
 			{less}
 		</button>
-		<button onClick={props.added} className="burger-control-more">
+		<button onClick={added} className="burger-control-more">
 			{more}
 		</button>
 	</div>
 }
 
-export default LocalHOC(item);
+export default item;

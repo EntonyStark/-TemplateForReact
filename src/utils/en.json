@@ -14,7 +14,17 @@
     "less": "Less",
     "more": "More",
     "currentPrise": "Current Price",
-    "orderNow": "Order now"
+    "orderNow": "Order now",
+    "yourOrder": "Your order",
+    "description": "A delicious burger with the following ingredients",
+    "totalPrise": "Total Price",
+    "choice": "Continue or Checkout ?",
+    "cancelButton": "CANCEL",
+    "okButton": "CONTINUE",
+    "salad": "Salad",
+    "bacon": "Bacon",
+    "cheese": "Cheese",
+    "meat": "Meat"
   },
   "users": [
     {

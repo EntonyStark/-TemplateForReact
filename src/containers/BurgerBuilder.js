@@ -1,6 +1,6 @@
 import React from "react";
 
-import NavBar from "./../components/navigation";
+import HeaderContainer from "./HeaderContainer";
 import Burger from "./../components/Burger/Burger";
 import BuildControls from "./../components/Burger/BuildControls";
 import Modal from "./../components/UI/Modal";
@@ -26,7 +26,6 @@ class BurgerBuilder extends React.Component {
 		}).reduce((sum, el) => {
 			return sum + el
 		}, 0)
-		console.log('222', sum)
 		this.setState({purchasable: sum > 0})
 	}
 
@@ -69,21 +68,27 @@ class BurgerBuilder extends React.Component {
 		}
 		return (
 			<React.Fragment>
-				<NavBar />
-				<Modal 
-					closeModal={this.closeModalHandler}
-					showModal={this.state.openModal}>
-					<Order ingridients={this.state.ingridients} />
-				</Modal>
-				<Burger ingridients={this.state.ingridients} />
-				<BuildControls
-					price={this.state.totalPrise}
-					purchasable={this.state.purchasable}
-					disabled={disabledInfo}
-					showModal={this.openModalHandler}
-					ingridientRemoved={this.removeIngridientHandler}
-					ingridientAdded={this.addIngridientHandler}
-				/>
+				<HeaderContainer />
+				<div className="burger-page">
+					<Modal 
+						closeModal={this.closeModalHandler}
+						showModal={this.state.openModal}>
+						<Order
+							price={this.state.totalPrise} 
+							closeModal={this.closeModalHandler}
+							ingridients={this.state.ingridients} />
+					</Modal>
+					<Burger ingridients={this.state.ingridients} />
+					<BuildControls
+						ingridients={this.state.ingridients}
+						price={this.state.totalPrise}
+						purchasable={this.state.purchasable}
+						disabled={disabledInfo}
+						showModal={this.openModalHandler}
+						ingridientRemoved={this.removeIngridientHandler}
+						ingridientAdded={this.addIngridientHandler}
+					/>
+				</div>
 			</React.Fragment>
 		);
 	}

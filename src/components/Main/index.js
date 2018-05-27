@@ -1,5 +1,5 @@
 import React from "react";
-import NavBar from './../navigation';
+import HeaderContainer from './../../containers/HeaderContainer';
 
 import LocalHOC from "./../HOC/example2.js";
 
@@ -7,7 +7,7 @@ const mainPage = (props) => {
 	const {title, switchLang } = props.lang.mainPage
 	return (
 		<React.Fragment>
-			<NavBar />
+			<HeaderContainer />
 			<div className="main-container">
 				<h1 className="greeting">{`${title} :)`}</h1>
 				<div className="toggle-block">

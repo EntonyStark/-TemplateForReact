@@ -1,11 +1,11 @@
 import React from "react";
-import NavBar from './../navigation';
+import HeaderContainer from './../../containers/HeaderContainer';
 import UserListComponent from './userList';
 
 const userList = () => {
 	return (
 		<React.Fragment>
-			<NavBar />
+			<HeaderContainer />
     	<UserListComponent />
     </React.Fragment>
 	)

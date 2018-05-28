@@ -15,6 +15,7 @@ class HeaderContainer extends Component {
 			main: `Error`,
 			list: `Error`,
 			drugs: `Error`,
+			blog: `Error`,
 			burgerPage: {
 				burger: `Error` 
 			} 
@@ -24,18 +25,18 @@ class HeaderContainer extends Component {
 	state ={ showDrawer: false }
 
 	closeDrawerHandler = () => this.setState({showDrawer: false})
-	// openDrawerHandler = () => this.setState({showDrawer: true})
 	toggleDrawerHandler = () => this.setState( prevState =>{ return {showDrawer: !prevState.showDrawer}})
 
 
 	render() {
-		const { main, list, drugs, burgerPage } = this.props.lang;
+		const { main, list, drugs, blog, burgerPage } = this.props.lang;
 
 		const listItems = [
 			{ link: `/`, text: main },
 			{ link: `/users`, text: list },
 			{ link: `/drugs`, text: drugs },
 			{ link: `/burger`, text: burgerPage.burger },
+			{ link: `/blog`, text: blog },
 		];
 
 		return (

@@ -1,10 +1,12 @@
 $icon-font-path: "~bootstrap-sass/assets/fonts/bootstrap/";
 @import "~bootstrap-sass/assets/stylesheets/bootstrap";
+@import '~react-notifications/lib/notifications.css';
 
 @import "./partials/fonts";
 @import "./partials/first";
 @import "./partials/loader";
 @import "./partials/burger";
+@import "./partials/blog";
 
 body {
   // font-family: 'PT Sans Narrow', sans-serif;

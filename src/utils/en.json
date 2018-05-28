@@ -2,6 +2,7 @@
   "main": "Main",
   "list": "Our team",
   "drugs": "Ligth Drugs",
+  "blog": "Blog",
   "mainPage": {
     "title": "Welcome to React",
     "switchLang": "Select the system language"

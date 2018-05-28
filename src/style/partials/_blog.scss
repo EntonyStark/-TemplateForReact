@@ -1,0 +1,94 @@
+.blog-container {
+  margin-top: 72px;
+  .posts {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    width: 80%;
+    margin: auto;
+    .post {
+      width: 250px;
+      padding: 16px;
+      text-align: center;
+      border: 1px solid #eee;
+      box-shadow: 0 2px 3px #ccc;
+      margin: 10px;
+      box-sizing: border-box;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      &:hover, &:active {
+        background-color: #C0DDF5;
+      }
+    }
+    .author {
+      margin: 16px 0;
+      color: #ccc;
+    }
+  }
+  .full-post {
+    width: 80%;
+    margin: 20px auto;
+    border: 1px solid #eee;
+    box-shadow: 0 2px 3px #ccc;
+    text-align: center;
+    .edit {
+      label {
+        display: block;
+        color: grey;
+      }
+      button {
+        border: none;
+        background-color: transparent;
+        cursor: pointer;
+        outline: none;
+        color: #fa923f;
+        &:hover, &:active {
+          color: #521751;
+        }
+      }
+      .delete {
+        color: red;
+        &:hover, &:active {
+          color: darkred;
+        }
+      }
+    }
+  }
+  .new-post {
+    width: 80%;
+    margin: 20px auto;
+    border: 1px solid #eee;
+    box-shadow: 0 2px 3px #ccc;
+    text-align: center;
+    label {
+      display: block;
+      margin: 10px auto;
+      text-align: center;
+      font-weight: bold;
+    }
+    input, textarea, select {
+      display: block;
+      width: 80%;
+      box-sizing: border-box;
+      border: 1px solid black;
+      outline: none;
+      font: inherit;
+      margin: auto;
+    }
+    button {
+      margin: 5px 0;
+      padding: 10px;
+      font: inherit;
+      border: 1px solid #fa923f;
+      background-color: transparent;
+      color: #fa923f;
+      cursor: pointer;
+      &:hover, &:active {
+        color: #fff;
+        background-color: #fa923f;
+      }
+    }
+  }
+}

@@ -1,10 +1,12 @@
 import React, { Component } from "react";
 import { NotificationContainer } from "react-notifications";
 import { notificationSuccess, notificationFail } from "../utils/notification";
+
 import Post from "../components/Blog/Post";
 import FullPost from "../components/Blog/FullPost";
 import NewPost from "../components/Blog/NewPost";
 import HeaderContainer from "./HeaderContainer";
+import LocalHoc from "../components/HOC/example2";
 
 class BlogContainer extends Component {
   state = {
@@ -14,6 +16,7 @@ class BlogContainer extends Component {
   };
 
   componentDidMount() {
+    const { getUsersOk, usersFail } = this.props.lang.blogPage
     fetch("https://jsonplaceholder.typicode.com/posts")
       .then(response => {
         if (response.ok) return response.json();
@@ -24,16 +27,17 @@ class BlogContainer extends Component {
         const updatePosts = posts.map(el => ({ ...el, author: "Tony" }));
         this.setState({ post: updatePosts, error: false });
       })
-      .then(_ => notificationSuccess("GET USERS", "Фейковые юзеры приехали"))
+      .then(_ => notificationSuccess("GET USERS", getUsersOk))
       .catch(error => {
         this.setState({error: true})
-        notificationFail("GET USERS", "Фейковые юзеры не доехали")
+        notificationFail("GET USERS", usersFail)
       });
   }
 
   handleSelect = id => this.setState({selectedPost: id})
 
   render() {
+    const { errorText } = this.props.lang.blogPage
     const { selectedPost, post, error } = this.state
     const posts = post.map(el => (
       <Post
@@ -44,18 +48,18 @@ class BlogContainer extends Component {
       />
     ));
 
-    const errorText = <p style={{textAlign: `center`, marginTop: `15px`}}>Something went wrong!</p>
+    const errorMessage = <p style={{textAlign: `center`, marginTop: `15px`}}>{errorText}</p>
 
     return (
       <React.Fragment>
         <HeaderContainer />
         <div className="blog-container">
-          <section className="posts">{error ? errorText : posts}</section>
+          <section className="posts">{error ? errorMessage : posts}</section>
           <section>
-            <FullPost id={selectedPost} />
+            <FullPost id={selectedPost} blogPage={this.props.lang.blogPage} />
           </section>
           <section>
-            <NewPost />
+            <NewPost blogPage={this.props.lang.blogPage} />
           </section>
         </div>
         <NotificationContainer />
@@ -64,4 +68,4 @@ class BlogContainer extends Component {
   }
 }
 
-export default BlogContainer;
+export default LocalHoc(BlogContainer);

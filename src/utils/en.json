@@ -27,6 +27,23 @@
     "cheese": "Cheese",
     "meat": "Meat"
   },
+  "blogPage": {
+    "errorText": "Something went wrong!",
+    "getUsersOk": "Data provided",
+    "usersFail": "An error has occurred",
+    "selectPost": "Please select a Post!",
+    "deleteButton": "Delete",
+    "getUserOk": "User provided",
+    "delUserOk": "User Delete",
+    "postUserOk": "The record is successful",
+    "header": "Add a Post",
+    "title": "Title",
+    "content": "Content",
+    "author": "Author",
+    "addButton": "Add Post",
+    "author1": "Max",
+    "author2": "Tony"
+  },
   "users": [
     {
       "name": "Artem",

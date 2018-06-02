@@ -37,7 +37,7 @@ const order = props => {
 				className="button-custom"
 				type="button-custom--success"
 				text={okButton}
-				onClick={props.closeModal}
+				onClick={props.success}
 			/>
 		</React.Fragment>
 	);

@@ -55,12 +55,12 @@ class BlogContainer extends Component {
         <HeaderContainer />
         <div className="blog-container">
           <section className="posts">{error ? errorMessage : posts}</section>
-          <section>
+     {/*     <section>
             <FullPost id={selectedPost} blogPage={this.props.lang.blogPage} />
           </section>
           <section>
             <NewPost blogPage={this.props.lang.blogPage} />
-          </section>
+          </section>*/}
         </div>
         <NotificationContainer />
       </React.Fragment>

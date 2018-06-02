@@ -9,7 +9,7 @@ const navItem = props => {
 				className={link === match.path ? "nav-li-a nav-li-a--active" : "nav-li-a"}
 				to={props.link}
 			>
-				{props.text}
+				{text}
 			</Link>
 		</li>
 	);

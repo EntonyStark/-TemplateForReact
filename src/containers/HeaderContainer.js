@@ -16,6 +16,7 @@ class HeaderContainer extends Component {
 			list: `Error`,
 			drugs: `Error`,
 			blog: `Error`,
+			orders: `Error`,
 			burgerPage: {
 				burger: `Error` 
 			} 
@@ -29,14 +30,15 @@ class HeaderContainer extends Component {
 
 
 	render() {
-		const { main, list, drugs, blog, burgerPage } = this.props.lang;
+		const { main, list, drugs, blog, burgerPage, orders } = this.props.lang;
 
 		const listItems = [
 			{ link: `/`, text: main },
 			{ link: `/users`, text: list },
 			{ link: `/drugs`, text: drugs },
-			{ link: `/burger`, text: burgerPage.burger },
 			{ link: `/blog`, text: blog },
+			{ link: `/burger`, text: burgerPage.burger },
+			{ link: `/orders`, text: orders },
 		];
 
 		return (

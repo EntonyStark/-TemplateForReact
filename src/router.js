@@ -4,8 +4,10 @@ import { Route, Switch } from "react-router-dom";
 import UserList from "./components/Users/index";
 import Main from "./containers/Main";
 import DrugsContainer from "./containers/DrugsContainer";
-import BurgerBuilder from "./containers/BurgerBuilder";
 import BlogContainer from "./containers/BlogContainer";
+import BurgerBuilder from "./containers/burger/BurgerBuilder";
+import CheckoutContainer from "./containers/burger/CheckoutContainer";
+import OrdersContainer from "./containers/burger/OrdersContainer";
 
 const Routes = props => {
   return (
@@ -15,6 +17,8 @@ const Routes = props => {
       <Route exact path="/drugs" component={DrugsContainer} />
       <Route exact path="/burger" component={BurgerBuilder} />
       <Route exact path="/blog" component={BlogContainer} />
+      <Route exact path="/checkout" component={CheckoutContainer} />
+      <Route exact path="/orders" component={OrdersContainer} />
     </Switch>
   );
 };

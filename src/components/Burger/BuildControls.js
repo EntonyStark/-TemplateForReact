@@ -14,8 +14,8 @@ const buildControls = props => {
 				<Item
 					less={less}
 					more={more}
-					added={() => props.ingridientAdded(el)}
-					removed={() => props.ingridientRemoved(el)}
+					added={props.ingridientAdded.bind(null, el)}
+					removed={props.ingridientRemoved.bind(null, el)}
 					key={el}
 					label={props.lang.burgerPage[el]}
 					disabled={props.disabled[el]}

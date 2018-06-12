@@ -1,4 +1,5 @@
 import * as Types from "./../constants/ActionTypes";
+
 const initialState = {
  all: null,
  data: []

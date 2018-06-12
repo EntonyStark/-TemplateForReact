@@ -5,7 +5,8 @@ import LocalHOC from "./../HOC/example2.js";
 
 const burger = props => {
 	const { emptyBurger } = props.lang.burgerPage;
-	const someIngridients = Object.keys(props.ingridients)
+	const template = props.ingridients ? props.ingridients : {} 
+	const someIngridients = Object.keys(template)
 		.map(elem => {
 			return [...Array(props.ingridients[elem])].map((_, i) => (
 				<BurgerIngridient key={elem + i} type={elem} />

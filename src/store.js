@@ -1,4 +1,4 @@
-import { createStore, applyMiddleware } from "redux";
+import { createStore, applyMiddleware, compose } from "redux";
 import createHistory from "history/createBrowserHistory";
 import { routerMiddleware } from "react-router-redux";
 import createSagaMiddleware from "redux-saga";
@@ -7,15 +7,19 @@ import createSagaMiddleware from "redux-saga";
 import reducers from "./reducers";
 import rootSaga from "./sagas";
 
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+
 export const history = createHistory();
 const sagaMiddleware = createSagaMiddleware();
 
 export const store = createStore(
   reducers,
-  applyMiddleware(
-  	// logger, 
-  	sagaMiddleware, 
-  	routerMiddleware(history)
+  composeEnhancers(
+	  applyMiddleware(
+	  	// logger, 
+	  	sagaMiddleware, 
+	  	routerMiddleware(history)
+	  )
   )
 );
 

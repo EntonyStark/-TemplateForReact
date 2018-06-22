@@ -22,7 +22,7 @@ const buildControls = props => {
 				/>
 			))}
 			<button onClick={props.showModal} disabled={!props.purchasable} className="order-button">
-				{orderNow}
+				{props.user ? orderNow : "Войди и кушай"}
 			</button>
 		</div>
 	);

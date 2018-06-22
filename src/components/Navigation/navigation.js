@@ -13,7 +13,7 @@ const NavBar = props => {
 			</div>
 			<Logo />
 			<nav className="dekstop-only">
-				<NavItems listItems={props.listItems} />
+				<NavItems listItems={props.listItems} user={props.user}/>
 			</nav>
 		</header>
 	);

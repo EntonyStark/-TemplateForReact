@@ -27,6 +27,10 @@ class ContactData extends Component {
 				notificationFail("БАБАХ", "ВСЕ ПРОПАЛО")
 				this.setState({loading: false})
 			}
+			if(status === 401 && !isFetching) {
+				notificationFail("БАБАХ", "АВТОРИЗУЙТЕСЬ")
+				this.setState({loading: false})
+			}
 		}
 	}
 
@@ -36,7 +40,7 @@ class ContactData extends Component {
 			totalPrise: this.props.totalPrise,
 			customer: value,
 		};
-		this.props.addOrder(order)
+		this.props.addOrder({val:order, history: this.props.history})
 	}
 
 	render() {

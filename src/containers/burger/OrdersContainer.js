@@ -13,7 +13,7 @@ class OrdersContainer extends Component {
 	state = { loading: true }
 
 	componentDidMount() {
-		this.props.getOrders()
+		this.props.getOrders(this.props.history)
 	}
 
 	componentDidUpdate (){	
@@ -25,6 +25,10 @@ class OrdersContainer extends Component {
 			}
 			if(status === 404 && !isFetching) {
 				notificationFail("БАБАХ", "ВСЕ ПРОПАЛО")
+				this.setState({loading: false})
+			}
+			if(status === 401 && !isFetching) {
+				notificationFail("БАБАХ", "АВТОРИЗУЙТЕСЬ")
 				this.setState({loading: false})
 			}
 		}

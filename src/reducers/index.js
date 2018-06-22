@@ -7,6 +7,7 @@ import ToggleDrags from "./ToggleDragsReducer";
 import Burger from "./BurgerReducer";
 import Order from "./OrsersReducer";
 import addOrder from "./OrderReducer";
+import auth from "./AuthReducer";
 
 export default combineReducers({
 	router: routerReducer,
@@ -16,4 +17,5 @@ export default combineReducers({
 	burger: Burger,
 	order: Order,
 	addOrder,
+	auth,
 });

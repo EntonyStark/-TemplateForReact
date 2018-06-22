@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 // import PropTypes from 'prop-types';
-// import { connect } from "react-redux";
+import { connect } from "react-redux";
 // import { bindActionCreators } from "redux";
 // import * as actions from "../actions/toggleLang";
 
@@ -23,7 +23,12 @@ class HeaderContainer extends Component {
 		}
 	}
 	
-	state ={ showDrawer: false }
+	state ={ showDrawer: false, user: null }
+
+	componentDidMount() {
+		const user = localStorage.getItem("userId");
+		this.setState({user: user})
+	}
 
 	closeDrawerHandler = () => this.setState({showDrawer: false})
 	toggleDrawerHandler = () => this.setState( prevState =>{ return {showDrawer: !prevState.showDrawer}})
@@ -31,7 +36,7 @@ class HeaderContainer extends Component {
 
 	render() {
 		const { main, list, drugs, blog, burgerPage, orders } = this.props.lang;
-
+		const { user, showDrawer } = this.state
 		const listItems = [
 			{ link: `/`, text: main },
 			{ link: `/users`, text: list },
@@ -39,17 +44,19 @@ class HeaderContainer extends Component {
 			{ link: `/blog`, text: blog },
 			{ link: `/burger`, text: burgerPage.burger },
 			{ link: `/orders`, text: orders },
+			{ link: user ? `/logOut` : `/auth`, text: user ? `LogOut` : `Enter` },
 		];
-
 		return (
 			<div className="header-container">
 				<NavBar 
+					user={user}
 					toggleDrawer={this.toggleDrawerHandler}
 					listItems={listItems} 
 					{...this.props} />
 				<SideDrawer
+					user={user}
 					closeDrawer={this.closeDrawerHandler} 
-					showBackdrop={this.state.showDrawer} 
+					showBackdrop={showDrawer} 
 					listItems={listItems} 
 					{...this.props} />
 			</div>
@@ -57,6 +64,11 @@ class HeaderContainer extends Component {
 	}
 }
 
+// const mapStateToProps = state => {
+// 	return {
+// 		user: state.auth.data
+// 	}
+// }
 // const mapDispatchToProps = dispatch => {
 // 	return bindActionCreators(actions, dispatch)
 // };

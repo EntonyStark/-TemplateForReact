@@ -11,13 +11,16 @@ import Order from "./../../components/Burger/order";
 import Spinner from "../../components/UI/Spinner";
 import { notificationSuccess, notificationFail } from "../../utils/notification";
 
-class BurgerBuilder extends React.Component {
+export class BurgerBuilder extends React.Component {
 	state = {
 		openModal: false,
 		loading: true,
+		user: null,
 	};
 
 	componentDidMount () {
+		const user = localStorage.getItem("userId");
+		this.setState({user: user})
 		this.props.getIngridients()
 	}
 
@@ -39,7 +42,13 @@ class BurgerBuilder extends React.Component {
 		return nextProps.totalPrice !== !this.props.totalPrice
 	}	
 
-	openModalHandler = () => this.setState({ openModal: true })
+	openModalHandler = () => {
+		if(this.state.user) {
+			this.setState({ openModal: true })
+		} else {
+			this.props.history.push("/auth")
+		}
+	}
 
 	closeModalHandler = () => this.setState({ openModal: false })
 
@@ -64,6 +73,7 @@ class BurgerBuilder extends React.Component {
 						showModal={this.openModalHandler}
 						ingridientRemoved={this.props.removeIngridient}
 						ingridientAdded={this.props.addIngridient}
+						user={this.state.user}
 					/>
 				</React.Fragment>)
 		}

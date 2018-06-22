@@ -15,7 +15,7 @@ const sideDrawer = props => {
 			<div className={clasess}>
 				<Logo />
 				<nav>
-					<NavItems listItems={props.listItems} />
+					<NavItems listItems={props.listItems} user={props.user}/>
 				</nav>
 			</div>
 		</React.Fragment>	

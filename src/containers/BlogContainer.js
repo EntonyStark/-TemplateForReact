@@ -3,8 +3,6 @@ import { NotificationContainer } from "react-notifications";
 import { notificationSuccess, notificationFail } from "../utils/notification";
 
 import Post from "../components/Blog/Post";
-import FullPost from "../components/Blog/FullPost";
-import NewPost from "../components/Blog/NewPost";
 import HeaderContainer from "./HeaderContainer";
 import LocalHoc from "../components/HOC/example2";
 
@@ -12,11 +10,11 @@ class BlogContainer extends Component {
   state = {
     post: [],
     selectedPost: null,
-    error: false,
+    error: false
   };
 
   componentDidMount() {
-    const { getUsersOk, usersFail } = this.props.lang.blogPage
+    const { getUsersOk, usersFail } = this.props.lang.blogPage;
     fetch("https://jsonplaceholder.typicode.com/posts")
       .then(response => {
         if (response.ok) return response.json();
@@ -29,16 +27,16 @@ class BlogContainer extends Component {
       })
       .then(_ => notificationSuccess("GET USERS", getUsersOk))
       .catch(error => {
-        this.setState({error: true})
-        notificationFail("GET USERS", usersFail)
+        this.setState({ error: true });
+        notificationFail("GET USERS", usersFail);
       });
   }
 
-  handleSelect = id => this.setState({selectedPost: id})
+  handleSelect = id => this.setState({ selectedPost: id });
 
   render() {
-    const { errorText } = this.props.lang.blogPage
-    const { selectedPost, post, error } = this.state
+    const { errorText } = this.props.lang.blogPage;
+    const { selectedPost, post, error } = this.state;
     const posts = post.map(el => (
       <Post
         key={el.id}
@@ -48,14 +46,16 @@ class BlogContainer extends Component {
       />
     ));
 
-    const errorMessage = <p style={{textAlign: `center`, marginTop: `15px`}}>{errorText}</p>
+    const errorMessage = (
+      <p style={{ textAlign: `center`, marginTop: `15px` }}>{errorText}</p>
+    );
 
     return (
       <React.Fragment>
         <HeaderContainer />
         <div className="blog-container">
           <section className="posts">{error ? errorMessage : posts}</section>
-     {/*     <section>
+          {/*     <section>
             <FullPost id={selectedPost} blogPage={this.props.lang.blogPage} />
           </section>
           <section>

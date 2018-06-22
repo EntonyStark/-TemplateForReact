@@ -9,17 +9,17 @@ import DrugsContainer from "./containers/DrugsContainer";
 import BlogContainer from "./containers/BlogContainer";
 import BurgerBuilder from "./containers/burger/BurgerBuilder";
 
-const checkout = acyncComponent( () => {
-  return import("./containers/burger/CheckoutContainer")
-})
+const checkout = acyncComponent(() => {
+  return import("./containers/burger/CheckoutContainer");
+});
 
-const auth = acyncComponent( () => {
-  return import("./containers/AuthContainer")
-})
+const auth = acyncComponent(() => {
+  return import("./containers/AuthContainer");
+});
 
-const orders = acyncComponent( () => {
-  return import("./containers/burger/OrdersContainer")
-})
+const orders = acyncComponent(() => {
+  return import("./containers/burger/OrdersContainer");
+});
 
 const Routes = props => {
   return (

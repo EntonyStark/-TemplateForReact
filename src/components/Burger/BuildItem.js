@@ -1,8 +1,10 @@
-import React from "react";
+import React from 'react';
+import PropTypes from 'prop-types';
 
-const item = props => {
-	const { more, less, disabled, added, label, removed } = props 
-	return <div className="burger-control">
+const item = ({
+	more, less, disabled, added, label, removed,
+}) => (
+	<div className="burger-control">
 		<div className="burger-control-label">{label}</div>
 		<button disabled={disabled} onClick={removed} className="burger-control-less">
 			{less}
@@ -11,6 +13,14 @@ const item = props => {
 			{more}
 		</button>
 	</div>
-}
+);
+item.propTypes = {
+	more: PropTypes.string,
+	less: PropTypes.string,
+	label: PropTypes.string,
+	disabled: PropTypes.bool,
+	added: PropTypes.func,
+	removed: PropTypes.func,
+};
 
 export default item;

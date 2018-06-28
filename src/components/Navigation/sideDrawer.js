@@ -1,25 +1,33 @@
-import React from "react";
+import React from 'react';
+import PropTypes from 'prop-types';
+import { SSL_OP_CRYPTOPRO_TLSEXT_BUG } from 'constants';
+import Logo from '../UI/logo';
+import NavItems from './navItems';
+import Backdrop from '../UI/Backdrop';
 
-import Logo from "./../UI/logo";
-import NavItems from "./navItems";
-import Backdrop from "./../UI/Backdrop";
-
-const sideDrawer = props => {
-	
-	let clasess = "side-drawer side-drawer--close"
-	if(props.showBackdrop) clasess = "side-drawer side-drawer--open"
+const sideDrawer = ({
+	showBackdrop, closeDrawer, listItems, user,
+}) => {
+	let clasess = 'side-drawer side-drawer--close';
+	if (showBackdrop) clasess = 'side-drawer side-drawer--open';
 
 	return (
 		<React.Fragment>
-			<Backdrop showBackdrop={props.showBackdrop} cliked={props.closeDrawer} />
+			<Backdrop showBackdrop={showBackdrop} cliked={closeDrawer} />
 			<div className={clasess}>
 				<Logo />
 				<nav>
-					<NavItems listItems={props.listItems} user={props.user}/>
+					<NavItems listItems={listItems} user={user}/>
 				</nav>
 			</div>
-		</React.Fragment>	
-	)
-}
+		</React.Fragment>
+	);
+};
+sideDrawer.propTypes = {
+	showBackdrop: PropTypes.bool,
+	closeDrawer: PropTypes.func,
+	user: PropTypes.string,
+	listItems: PropTypes.array,
+};
 
-export default sideDrawer
+export default sideDrawer;

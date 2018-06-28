@@ -1,9 +1,10 @@
-import React from "react";
+import React from 'react';
+import PropTypes from 'prop-types';
 
-const orders = props => {
-	const someIngridients = Object.keys(props.ingridients).map(elem => ({
+const orders = ({ customer, totalPrice, ingridients }) => {
+	const someIngridients = Object.keys(ingridients).map(elem => ({
 		name: elem,
-		value: props.ingridients[elem],
+		value: ingridients[elem],
 	}));
 	const list = someIngridients.map(el => (
 		<span className="item" key={el.name}>
@@ -15,15 +16,21 @@ const orders = props => {
 			<p>Ingridients: {list}</p>
 			<div className="customer">
 				<span>
-					Total Price :{" "}
+					Total Price :{' '}
 					<strong>
-						USD {props.totalPrice ? Number.parseFloat(props.totalPrice).toFixed(2) : "free"}
+						USD {totalPrice ? Number.parseFloat(totalPrice).toFixed(2) : 'free'}
 					</strong>
 				</span>
-				<span>Customer: {props.customer.name}</span>
+				<span>Customer: {customer.name}</span>
 			</div>
 		</div>
 	);
+};
+
+orders.propTypes = {
+	customer: PropTypes.object,
+	totalPrice: PropTypes.number,
+	ingridients: PropTypes.object,
 };
 
 export default orders;

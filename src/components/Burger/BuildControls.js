@@ -1,31 +1,48 @@
-import React from "react";
-import Item from "./BuildItem";
-import LocalHOC from "./../HOC/example2.js";
+import React from 'react';
+import PropTypes from 'prop-types';
+import Item from './BuildItem';
+import LocalHOC from '../HOC/example2';
 
-const buildControls = props => {
-	const controls = Object.keys(props.ingridients)
-	const { currentPrise, orderNow, less, more } = props.lang.burgerPage;
+const buildControls = ({
+	ingridients, lang, price, ingridientAdded, ingridientRemoved, disabled, showModal, purchasable, user,
+}) => {
+	const controls = Object.keys(ingridients);
+	const {
+		currentPrise, orderNow, less, more,
+	} = lang.burgerPage;
 	return (
 		<div className="burger-control-container">
 			<p>
-				{`${currentPrise}:`} {`${props.price > 4 ? props.price.toFixed(2) : 4} $`}
+				{`${currentPrise}:`} {`${price > 4 ? price.toFixed(2) : 4} $`}
 			</p>
-			{controls.map( el => (
+			{controls.map(el => (
 				<Item
 					less={less}
 					more={more}
-					added={props.ingridientAdded.bind(null, el)}
-					removed={props.ingridientRemoved.bind(null, el)}
+					added={ingridientAdded.bind(null, el)}
+					removed={ingridientRemoved.bind(null, el)}
 					key={el}
-					label={props.lang.burgerPage[el]}
-					disabled={props.disabled[el]}
+					label={lang.burgerPage[el]}
+					disabled={disabled[el]}
 				/>
 			))}
-			<button onClick={props.showModal} disabled={!props.purchasable} className="order-button">
-				{props.user ? orderNow : "Войди и кушай"}
+			<button onClick={showModal} disabled={!purchasable} className="order-button">
+				{user ? orderNow : 'Войди и кушай'}
 			</button>
 		</div>
 	);
+};
+
+buildControls.propTypes = {
+	lang: PropTypes.object,
+	disabled: PropTypes.bool,
+	purchasable: PropTypes.bool,
+	ingridientRemoved: PropTypes.func,
+	ingridientAdded: PropTypes.func,
+	showModal: PropTypes.func,
+	price: PropTypes.number,
+	ingridients: PropTypes.array,
+	user: PropTypes.object,
 };
 
 export default LocalHOC(buildControls);

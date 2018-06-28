@@ -1,20 +1,16 @@
-import React from "react";
+import React from 'react';
+import PropTypes from 'prop-types';
+import BurgerIngridient from './BurgerIngridient';
+import LocalHOC from '../HOC/example2';
 
-import BurgerIngridient from "./BurgerIngridient";
-import LocalHOC from "./../HOC/example2.js";
-
-const burger = props => {
-	const { emptyBurger } = props.lang.burgerPage;
-	const template = props.ingridients ? props.ingridients : {} 
+const burger = ({ lang, ingridients }) => {
+	const { emptyBurger } = lang.burgerPage;
+	const template = ingridients || {};
 	const someIngridients = Object.keys(template)
-		.map(elem => {
-			return [...Array(props.ingridients[elem])].map((_, i) => (
-				<BurgerIngridient key={elem + i} type={elem} />
-			));
-		})
-		.reduce((arr, el) => {
-			return arr.concat(el);
-		}, []);
+		.map(elem => [...Array(ingridients[elem])].map((_, i) => (
+			<BurgerIngridient key={elem + i} type={elem} />
+		)))
+		.reduce((arr, el) => arr.concat(el), []);
 	return (
 		<div className="burger-container">
 			<BurgerIngridient type="bread-top" />
@@ -22,6 +18,10 @@ const burger = props => {
 			<BurgerIngridient type="bread-bottom" />
 		</div>
 	);
+};
+burger.propTypes = {
+	lang: PropTypes.object,
+	ingridients: PropTypes.object,
 };
 
 export default LocalHOC(burger);

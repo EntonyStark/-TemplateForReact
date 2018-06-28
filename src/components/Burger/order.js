@@ -1,9 +1,12 @@
-import React from "react";
-import Button from "./../UI/button";
+import React from 'react';
+import PropTypes from 'prop-types';
+import Button from '../UI/button';
 
-import LocalHoc from "./../HOC/example2";
+import LocalHoc from '../HOC/example2';
 
-const order = props => {
+const order = ({
+	success, closeModal, price, ingridients, lang,
+}) => {
 	const {
 		yourOrder,
 		description,
@@ -11,11 +14,11 @@ const order = props => {
 		choice,
 		cancelButton,
 		okButton,
-	} = props.lang.burgerPage;
-	const ingrideentsSummary = Object.keys(props.ingridients).map(el => (
+	} = lang.burgerPage;
+	const ingrideentsSummary = Object.keys(ingridients).map(el => (
 		<li key={el}>
-			<span style={{ textTransform: "capitalize" }}>{props.lang.burgerPage[el]}:</span>{" "}
-			{props.ingridients[el]}
+			<span style={{ textTransform: 'capitalize' }}>{lang.burgerPage[el]}:</span>{' '}
+			{ingridients[el]}
 		</li>
 	));
 	return (
@@ -24,23 +27,31 @@ const order = props => {
 			<p>{`${description} :`}</p>
 			<ul>{ingrideentsSummary}</ul>
 			<p>
-				<strong>{`${totalPrise}: ${props.price.toFixed(2)}`}</strong>
+				<strong>{`${totalPrise}: ${price.toFixed(2)}`}</strong>
 			</p>
 			<p>{choice}</p>
 			<Button
 				className="button-custom"
 				type="button-custom--danger"
 				text={cancelButton}
-				onClick={props.closeModal}
+				onClick={closeModal}
 			/>
 			<Button
 				className="button-custom"
 				type="button-custom--success"
 				text={okButton}
-				onClick={props.success}
+				onClick={success}
 			/>
 		</React.Fragment>
 	);
+};
+
+order.propTypes = {
+	success: PropTypes.func,
+	closeModal: PropTypes.func,
+	price: PropTypes.number,
+	ingridients: PropTypes.object,
+	lang: PropTypes.object,
 };
 
 export default LocalHoc(order);

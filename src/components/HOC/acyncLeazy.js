@@ -1,24 +1,21 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 
-const acyncComponent = inpComponet => {
-	return class extends Component {
-		
+const acyncComponent = inpComponet => class extends Component {
 		state ={
 			component: null,
 		}
 
 		componentDidMount() {
 			inpComponet()
-				.then( el => {
-					this.setState({component: el.default})
-				})
+				.then((el) => {
+					this.setState({ component: el.default });
+				});
 		}
 
 		render() {
-			const C = this.state.component
-			return C ? <C {...this.props}/> : null
+			const C = this.state.component;
+			return C ? <C {...this.props}/> : null;
 		}
-	}
-}
+};
 
-export default acyncComponent
+export default acyncComponent;

@@ -1,14 +1,16 @@
-import React from "react";
-import Backdrop from "./Backdrop.js";
+import React from 'react';
+import PropTypes from 'prop-types';
+import Backdrop from './Backdrop';
 
 class Modal extends React.Component {
-
-	shouldComponentUpdate(nextProps, nextState) {
-		return nextProps.showModal !== this.props.showModal || nextProps.children !== this.props.children
+	static propTypes = {
+		children: PropTypes.object,
+		showModal: PropTypes.bool,
+		closeModal: PropTypes.func,
 	}
 
-	componentWillUpdate() {
-		console.log('componentWillUpdate in Modal')
+	shouldComponentUpdate(nextProps, nextState) {
+		return nextProps.showModal !== this.props.showModal || nextProps.children !== this.props.children;
 	}
 
 	render() {
@@ -16,8 +18,8 @@ class Modal extends React.Component {
 			<React.Fragment>
 				<div
 					style={{
-						transform: this.props.showModal ? `translateX(0)` : `translateX(1000px)`,
-						opacity: this.props.showModal ? "1" : "0",
+						transform: this.props.showModal ? 'translateX(0)' : 'translateX(1000px)',
+						opacity: this.props.showModal ? '1' : '0',
 					}}
 					className="modal-order"
 				>

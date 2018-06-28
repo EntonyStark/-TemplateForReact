@@ -1,7 +1,12 @@
-import React from "react";
+import React from 'react';
+import PropTypes from 'prop-types';
 
-const backdrop = props => (
-	props.showBackdrop ? <div className="backdrop" onClick={props.cliked}></div> : null
-)
+const backdrop = ({ showBackdrop, cliked }) => (
+	showBackdrop ? <div className="backdrop" onClick={cliked}></div> : null
+);
+backdrop.propTypes = {
+	showBackdrop: PropTypes.bool,
+	cliked: PropTypes.func,
+};
 
-export default backdrop
+export default backdrop;

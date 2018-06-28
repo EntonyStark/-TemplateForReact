@@ -1,10 +1,10 @@
-import React from "react";
-import HeaderContainer from './../../containers/HeaderContainer';
+import React from 'react';
+import PropTypes from 'prop-types';
+import HeaderContainer from '../../containers/HeaderContainer';
+import LocalHOC from '../HOC/example2';
 
-import LocalHOC from "./../HOC/example2.js";
-
-const mainPage = (props) => {
-	const {title, switchLang } = props.lang.mainPage
+const mainPage = ({ onClickRu, onClickEn, lang }) => {
+	const { title, switchLang } = lang.mainPage;
 	return (
 		<React.Fragment>
 			<HeaderContainer />
@@ -12,12 +12,17 @@ const mainPage = (props) => {
 				<h1 className="greeting">{`${title} :)`}</h1>
 				<div className="toggle-block">
 					<span className="toggle-title">{`${switchLang} :`}</span>
-	    		<button className="toggle-btn" type="button" onClick={props.onClickRu}>RU</button>
-	    		<button className="toggle-btn" type="button" onClick={props.onClickEn}>EN</button>
+					<button className="toggle-btn" type="button" onClick={onClickRu}>RU</button>
+					<button className="toggle-btn" type="button" onClick={onClickEn}>EN</button>
 				</div>
 			</div>
-    </React.Fragment>
-	)
-}
+		</React.Fragment>
+	);
+};
+mainPage.propTypes = {
+	onClickEn: PropTypes.func,
+	onClickRu: PropTypes.func,
+	lang: PropTypes.object,
+};
 
-export default LocalHOC(mainPage)
+export default LocalHOC(mainPage);

@@ -1,4 +1,5 @@
-import React from "react";
+import React from 'react';
+import PropTypes from 'prop-types';
 
 const post = props => (
 	<article className="post" onClick={props.clicked}>
@@ -8,5 +9,10 @@ const post = props => (
 		</div>
 	</article>
 );
+post.propTypes = {
+	clicked: PropTypes.func,
+	author: PropTypes.string,
+	title: PropTypes.string,
+};
 
 export default post;

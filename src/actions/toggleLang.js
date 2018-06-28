@@ -1,13 +1,10 @@
-import * as types from "./../constants/ActionTypes";
+import * as types from '../constants/ActionTypes';
 
 const {
-  TOGGLE_LANGUAGE
-} = types
+	TOGGLE_LANGUAGE,
+} = types;
 
-export const toggleLang = ( payload ) => {
-  return {
-    type: TOGGLE_LANGUAGE,
-    payload
-  };
-};
-
+export default payload => ({
+	type: TOGGLE_LANGUAGE,
+	payload,
+});

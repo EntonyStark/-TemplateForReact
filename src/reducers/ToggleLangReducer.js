@@ -1,16 +1,16 @@
-import * as Types from "../constants/ActionTypes";
+import * as Types from '../constants/ActionTypes';
 
 const initialState = {
- lang: 'ru'
+	lang: 'ru',
 };
 
 export default (state = initialState, action) => {
 	switch (action.type) {
-		case Types.TOGGLE_LANGUAGE: {
-			return {...state, lang: action.payload}
-		}
+	case Types.TOGGLE_LANGUAGE: {
+		return { ...state, lang: action.payload };
+	}
 
-		default:
-			return state;
+	default:
+		return state;
 	}
 };

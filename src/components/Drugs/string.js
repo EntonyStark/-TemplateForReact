@@ -1,10 +1,14 @@
-import React from "react";
-import ChangePosition from "./../HOC/example3";
+import React from 'react';
+import PropTypes from 'prop-types';
+import ChangePosition from '../HOC/example3';
 
-const stringa = props => {
-	return <span style={props.style} className="drags-staff" key={props.index}>
-		{props.el}
-	</span>
-}
+const stringa = ({ style, index, el }) => <span style={style} className="drags-staff" key={index}>
+	{el}
+</span>;
+stringa.propTypes = {
+	style: PropTypes.object,
+	index: PropTypes.number,
+	el: PropTypes.string,
+};
 
-export default ChangePosition(stringa)
+export default ChangePosition(stringa);

@@ -4,12 +4,19 @@ import Item from './BuildItem';
 import LocalHOC from '../HOC/example2';
 
 const buildControls = ({
-	ingridients, lang, price, ingridientAdded, ingridientRemoved, disabled, showModal, purchasable, user,
+	ingridients,
+	lang,
+	price,
+	ingridientAdded,
+	ingridientRemoved,
+	disabled,
+	showModal,
+	purchasable,
+	user,
 }) => {
 	const controls = Object.keys(ingridients);
-	const {
-		currentPrise, orderNow, less, more,
-	} = lang.burgerPage;
+	const { currentPrise, orderNow, less } = lang.burgerPage;
+	console.log('ingridients', ingridients);
 	return (
 		<div className="burger-control-container">
 			<p>
@@ -18,15 +25,18 @@ const buildControls = ({
 			{controls.map(el => (
 				<Item
 					less={less}
-					more={more}
+					more={lang.burgerPage.more}
 					added={ingridientAdded.bind(null, el)}
 					removed={ingridientRemoved.bind(null, el)}
 					key={el}
+					disabled={ingridients[el] === 0}
 					label={lang.burgerPage[el]}
-					disabled={disabled[el]}
 				/>
 			))}
-			<button onClick={showModal} disabled={!purchasable} className="order-button">
+			<button
+				onClick={showModal}
+				disabled={!purchasable}
+				className="order-button">
 				{user ? orderNow : 'Войди и кушай'}
 			</button>
 		</div>
@@ -41,8 +51,8 @@ buildControls.propTypes = {
 	ingridientAdded: PropTypes.func,
 	showModal: PropTypes.func,
 	price: PropTypes.number,
-	ingridients: PropTypes.array,
-	user: PropTypes.object,
+	ingridients: PropTypes.object,
+	user: PropTypes.string,
 };
 
 export default LocalHOC(buildControls);

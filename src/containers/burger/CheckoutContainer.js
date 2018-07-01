@@ -10,8 +10,8 @@ class CheckoutContainer extends Component {
 	static propTypes = {
 		history: PropTypes.object,
 		totalPrice: PropTypes.number,
-		ingridients: PropTypes.array,
-	}
+		ingridients: PropTypes.object,
+	};
 
 	state = { contactData: false };
 
@@ -35,7 +35,11 @@ class CheckoutContainer extends Component {
 					{...this.props}
 				/>
 				{this.state.contactData && (
-					<ContactData ingridients={ingridients} totalPrise={totalPrice} {...this.props} />
+					<ContactData
+						ingridients={ingridients}
+						totalPrise={totalPrice}
+						{...this.props}
+					/>
 				)}
 			</Fragment>
 		);

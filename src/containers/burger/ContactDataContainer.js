@@ -4,7 +4,10 @@ import { connect } from 'react-redux';
 import { reduxForm, Field } from 'redux-form';
 import { NotificationContainer } from 'react-notifications';
 import * as actions from '../../actions/BurgerAction';
-import { notificationSuccess, notificationFail } from '../../utils/notification';
+import {
+	notificationSuccess,
+	notificationFail,
+} from '../../utils/notification';
 
 import Button from '../../components/UI/button';
 import Spinner from '../../components/UI/Spinner';
@@ -12,19 +15,18 @@ import LocalHoc from '../../components/HOC/example2';
 import { input, select } from '../../components/UI/formFunc/form';
 import validate from '../../components/UI/formFunc/validate';
 
-
 class ContactData extends Component {
 	static propTypes = {
 		isFetching: PropTypes.bool,
 		status: PropTypes.number,
-		ingridients: PropTypes.array,
+		ingridients: PropTypes.object,
 		totalPrise: PropTypes.number,
 		addOrder: PropTypes.func,
 		history: PropTypes.object,
 		handleSubmit: PropTypes.func,
-	}
+	};
 
-	state = { loading: true }
+	state = { loading: true };
 
 	componentDidUpdate() {
 		const { status, isFetching } = this.props;
@@ -51,7 +53,7 @@ class ContactData extends Component {
 			customer: value,
 		};
 		this.props.addOrder({ val: order, history: this.props.history });
-	}
+	};
 
 	render() {
 		const { handleSubmit, isFetching } = this.props;
@@ -76,7 +78,8 @@ class ContactData extends Component {
 							type="text"
 							className="input-element"
 							errorClass="--invalid"
-							component={input}/>
+							component={input}
+						/>
 						<Field
 							name="email"
 							placeholder="Your Mail"
@@ -84,7 +87,8 @@ class ContactData extends Component {
 							type="text"
 							className="input-element"
 							errorClass="--invalid"
-							component={input}/>
+							component={input}
+						/>
 						<Field
 							name="adress"
 							placeholder="Your Adress"
@@ -92,7 +96,8 @@ class ContactData extends Component {
 							type="text"
 							className="input-element"
 							errorClass="--invalid"
-							component={input}/>
+							component={input}
+						/>
 						<Field
 							name="deliveryMethod"
 							className="select-element"
@@ -117,6 +122,14 @@ const mapStateToProps = state => ({
 	isFetching: state.addOrder.isFetching,
 });
 
-export default connect(mapStateToProps, actions)(LocalHoc(reduxForm({
-	form: 'ContactData', validate,
-})(ContactData)));
+export default connect(
+	mapStateToProps,
+	actions,
+)(
+	LocalHoc(
+		reduxForm({
+			form: 'ContactData',
+			validate,
+		})(ContactData),
+	),
+);

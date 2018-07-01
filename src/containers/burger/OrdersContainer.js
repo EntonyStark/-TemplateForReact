@@ -6,8 +6,10 @@ import * as actions from '../../actions/BurgerAction';
 
 import Orders from '../../components/Order/orders';
 import HeaderContainer from '../HeaderContainer';
-import { notificationSuccess, notificationFail } from '../../utils/notification';
-
+import {
+	notificationSuccess,
+	notificationFail,
+} from '../../utils/notification';
 
 class OrdersContainer extends Component {
 	static propTypes = {
@@ -16,9 +18,9 @@ class OrdersContainer extends Component {
 		status: PropTypes.number,
 		isFetching: PropTypes.bool,
 		data: PropTypes.array,
-	}
+	};
 
-	state = { loading: true }
+	state = { loading: true };
 
 	componentDidMount() {
 		this.props.getOrders(this.props.history);
@@ -53,7 +55,8 @@ class OrdersContainer extends Component {
 							key={el.id}
 							customer={el.data.customer}
 							ingridients={el.data.ingridients}
-							totalPrice={el.data.totalPrise} />
+							totalPrice={el.data.totalPrise}
+						/>
 					))}
 				</div>
 				<NotificationContainer />
@@ -68,4 +71,7 @@ const mapStateToProps = state => ({
 	isFetching: state.order.isFetching,
 });
 
-export default connect(mapStateToProps, actions)(OrdersContainer);
+export default connect(
+	mapStateToProps,
+	actions,
+)(OrdersContainer);

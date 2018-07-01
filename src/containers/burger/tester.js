@@ -1,42 +1,63 @@
+// @flow
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-// import { bindActionCreators } from 'redux';
 import { NotificationContainer } from 'react-notifications';
 import * as actions from '../../actions/BurgerAction';
-
 import HeaderContainer from '../HeaderContainer';
+
 import Burger from '../../components/Burger/Burger';
 import BuildControls from '../../components/Burger/BuildControls';
 import Modal from '../../components/UI/Modal';
 import Order from '../../components/Burger/order';
 import Spinner from '../../components/UI/Spinner';
-import { notificationSuccess, notificationFail } from '../../utils/notification';
+import {
+	notificationSuccess,
+	notificationFail,
+} from '../../utils/notification';
 
-export class BurgerBuilder extends Component {
+type Props = {
+	getIngridients: () => void,
+	removeIngridient: () => void,
+	addIngridient: () => void,
+	isFetching: boolean,
+	purchasable: boolean,
+	status: number,
+	totalPrice: number,
+	history: Object,
+	ingridients: Object
+};
+
+type State = {
+	openModal: boolean,
+	loading: boolean,
+	user: ?string
+};
+
+class Burger1 extends Component<Props, State> {
 	static propTypes = {
 		isFetching: PropTypes.bool,
 		status: PropTypes.number,
-		ingridients: PropTypes.array,
+		ingridients: PropTypes.object,
 		totalPrice: PropTypes.number,
 		history: PropTypes.object,
 		purchasable: PropTypes.bool,
-		// getIngridients: PropTypes.func,
+		getIngridients: PropTypes.func,
 		removeIngridient: PropTypes.func,
 		addIngridient: PropTypes.func,
-	}
+	};
 
 	state = {
 		openModal: false,
 		loading: true,
-		user: null,
+		user: '',
 	};
 
 	componentDidMount() {
-		const user = localStorage.getItem('userId');
-		this.setState({ user });
-		console.log(this, 'getIngridients');
-		// this.props.getIngridients();
+		const userId = localStorage.getItem('userId');
+		this.setState({ user: userId });
+		console.log(userId, 'getIngridients');
+		this.props.getIngridients();
 	}
 
 	componentDidUpdate() {
@@ -53,55 +74,56 @@ export class BurgerBuilder extends Component {
 		}
 	}
 
-	// shouldComponentUpdate(nextProps, nextState) {
-	// 	return nextProps.totalPrice !== !this.props.totalPrice;
-	// }
-
 	openModalHandler = () => {
 		if (this.state.user) {
 			this.setState({ openModal: true });
 		} else {
 			this.props.history.push('/auth');
 		}
-	}
+	};
 
-	closeModalHandler = () => this.setState({ openModal: false })
+	closeModalHandler = () => this.setState({ openModal: false });
 
-	successRequestHandler = () => this.props.history.push('/checkout')
+	successRequestHandler = () => this.props.history.push('/checkout');
 
 	render() {
-		console.log('this/', this.props);
-		const {
-			ingridients, totalPrice, purchasable, status,
-		} = this.props;
-
-		const disabledInfo = { ...this.props.ingridients };
-		// for (const key in disabledInfo) {
-		// 	disabledInfo[key] = disabledInfo[key] <= 0;
-		// }
-		let burger = status === 404
-			? <p style={{ textAlign: 'center', marginTop: '15px' }}>fail loading data</p>
-			: <Spinner />;
+		const { ingridients, status, totalPrice } = this.props;
+		let burger
+			= status === 404 ? (
+				<p
+					style={{
+						textAlign: 'center',
+						marginTop: '15px',
+					}}>
+					fail loading data
+				</p>
+			) : (
+				<Spinner />
+			);
 		if (ingridients) {
-			burger = (<Fragment>
-				<Burger ingridients={ingridients} />
-				<BuildControls
-					ingridients={ingridients}
-					price={totalPrice}
-					purchasable={purchasable}
-					disabled={disabledInfo}
-					showModal={this.openModalHandler}
-					ingridientRemoved={this.props.removeIngridient}
-					ingridientAdded={this.props.addIngridient}
-					user={this.state.user}
-				/>
-			</Fragment>);
+			burger = (
+				<Fragment>
+					<Burger ingridients={ingridients} />
+					<BuildControls
+						ingridients={ingridients}
+						price={totalPrice}
+						purchasable={this.props.purchasable}
+						// disabled={disabledInfo}
+						showModal={this.openModalHandler}
+						ingridientRemoved={this.props.removeIngridient}
+						ingridientAdded={this.props.addIngridient}
+						user={this.state.user}
+					/>
+				</Fragment>
+			);
 		}
 		return (
 			<Fragment>
 				<HeaderContainer />
 				<div className="burger-page">
-					<Modal closeModal={this.closeModalHandler} showModal={this.state.openModal}>
+					<Modal
+						closeModal={this.closeModalHandler}
+						showModal={this.state.openModal}>
 						{!ingridients ? (
 							<Spinner />
 						) : (
@@ -113,9 +135,9 @@ export class BurgerBuilder extends Component {
 							/>
 						)}
 					</Modal>
+					<NotificationContainer />
 					{burger}
 				</div>
-				<NotificationContainer />
 			</Fragment>
 		);
 	}
@@ -129,6 +151,7 @@ const mapStateToProps = state => ({
 	ingridients: state.burger.ingridients,
 });
 
-// const mapDispatchToProps = dispatch => bindActionCreators({ getIngridients }, dispatch);
-
-export default connect(mapStateToProps, actions)(BurgerBuilder);
+export default connect(
+	mapStateToProps,
+	actions,
+)(Burger1);

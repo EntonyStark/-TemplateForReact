@@ -9,7 +9,7 @@ import MainPage from '../components/Main/index';
 class Main extends Component {
 	static propTypes = {
 		toggleLang: PropTypes.func,
-	}
+	};
 
 	render() {
 		return (
@@ -23,4 +23,7 @@ class Main extends Component {
 
 const mapDispatchToProps = dispatch => bindActionCreators({ toggleLang }, dispatch);
 
-export default connect(null, mapDispatchToProps)(Main);
+export default connect(
+	null,
+	mapDispatchToProps,
+)(Main);
